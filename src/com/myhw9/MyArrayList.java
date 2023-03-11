@@ -1,4 +1,4 @@
-package com.myarraylist;
+package com.myhw9;
 
 public class MyArrayList {
     private Object[] array;
