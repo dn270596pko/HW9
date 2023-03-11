@@ -1,40 +1,40 @@
 package com.myhw9;
 
-public class MyLinkedList {
+public class MyLinkedList<E> {
 
     private int size = 0;
     private Node head = null;
 
-    private static class Node {
-        Object value;
-        Node prev = null;
-        Node next = null;
+    private static class Node<E> {
+        E value;
+        Node<E> prev = null;
+        Node<E> next = null;
 
-        Node(Object value, Node prev, Node next) {
+        Node(E value, Node<E> prev, Node<E> next) {
             this.value = value;
             this.prev = prev;
             this.next = next;
         }
     }
 
-    public void add(Object value) {
+    public void add(E value) {
         if (head == null) {
-            head = new Node(value, null, null);
+            head = new Node<>(value, null, null);
         } else {
-            Node node = head;
+            Node<E> node = head;
             while (node.next != null) {
                 node = node.next;
             }
-            node.next = new Node(value, node, null);
+            node.next = new Node<>(value, node, null);
         }
         size++;
     }
 
-    public Object remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        Node node = head;
+        Node<E> node = head;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
@@ -59,11 +59,11 @@ public class MyLinkedList {
         return size;
     }
 
-    public Object get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        Node node = head;
+        Node<E> node = head;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }

@@ -1,17 +1,17 @@
 package com.myhw9;
 
-public class MyArrayList {
-    private Object[] array;
+public class MyArrayList<T> {
+    private T[] array;
     private int size;
 
     public MyArrayList() {
-        array = new Object[10];
+        array = (T[]) new Object[10];
         size = 0;
     }
 
-    public void add(Object value) {
+    public void add(T value) {
         if (size >= array.length) {
-            Object[] newArray = new Object[array.length * 2];
+            T[] newArray = (T[]) new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }
@@ -19,18 +19,18 @@ public class MyArrayList {
         size++;
     }
 
-    public Object remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        Object removed = array[index];
+        T removed = array[index];
         System.arraycopy(array, index + 1, array, index, size - index - 1);
         size--;
         return removed;
     }
 
     public void clear() {
-        array = new Object[10];
+        array = (T[]) new Object[10];
         size = 0;
     }
 
@@ -38,7 +38,7 @@ public class MyArrayList {
         return size;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
